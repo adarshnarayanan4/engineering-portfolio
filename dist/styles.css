@@ -318,6 +318,20 @@ h2 {
 
 .ml-feature img { width: 100%; height: auto; }
 
+.combustion-case-study { background: var(--white); }
+.research-case-intro { grid-template-columns: minmax(0, 1.05fr) minmax(380px, 1fr); }
+
+.research-feature {
+  width: 100%;
+  margin: 0;
+  justify-self: end;
+  padding: .45rem;
+  background: var(--paper);
+  border: 2px solid var(--signal);
+}
+
+.research-feature img { width: 100%; height: auto; }
+
 .project-details summary {
   display: inline-flex;
   align-items: center;
@@ -564,6 +578,8 @@ footer {
   .vespula-feature { justify-self: center; width: min(100%, 300px); transform: none; }
   .ml-case-intro { grid-template-columns: 1fr; }
   .ml-feature { justify-self: center; }
+  .research-case-intro { grid-template-columns: 1fr; }
+  .research-feature { justify-self: center; }
   .ml-pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .analysis-gallery { grid-template-columns: 1fr; }
   .process-gallery { grid-template-columns: 1fr; gap: 2.5rem; }
