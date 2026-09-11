@@ -148,24 +148,24 @@
 
           <div class="project-details-content">
             <div class="ml-pipeline" aria-label="Machine-learning workflow">
-              <div><span>01</span><strong>Sensor histories</strong><p>Three operating settings and 21 sensor measurements across engine cycles.</p></div>
-              <div><span>02</span><strong>Feature engineering</strong><p>Rolling statistics, sensor slopes, cycle differences, and baseline deviation.</p></div>
-              <div><span>03</span><strong>Model comparison</strong><p>Tree-based regressors, a 30-cycle LSTM, and a blended ensemble.</p></div>
-              <div><span>04</span><strong>Maintenance risk</strong><p>RUL predictions translated into high, moderate, and low-risk categories.</p></div>
+              <div><span>01</span><strong>Sensor histories</strong><p>Used 21 sensor measurements and three operating settings from simulated turbofan engines, tracked across each engine’s life cycle.</p></div>
+              <div><span>02</span><strong>Feature engineering</strong><p>Built time-dependent features such as rolling averages, sensor trends, cycle-to-cycle changes, and deviation from early-life behavior.</p></div>
+              <div><span>03</span><strong>Model comparison</strong><p>Compared tree-based regression models, an LSTM using 30-cycle sequences, and an ensemble that combined their predictions.</p></div>
+              <div><span>04</span><strong>Maintenance risk</strong><p>Converted Remaining Useful Life predictions into high-, moderate-, and low-risk groups to make the results easier to use for maintenance decisions.</p></div>
             </div>
 
             <div class="story-grid">
               <article>
                 <h3>The What</h3>
-                <p>The goal was to estimate Remaining Useful Life from simulated turbofan sensor data. A useful result needed to do more than predict a number—it needed to support inspection and maintenance prioritization before failure.</p>
+                <p>The goal was to predict <strong>Remaining Useful Life (RUL)</strong> from simulated turbofan engine sensor data. Rather than treating each engine cycle independently, I wanted the models to capture how sensor behavior changed as an engine moved closer to failure.</p>
               </article>
               <article>
                 <h3>The How</h3>
-                <p>I created a Python workflow to prepare the FD001 data, engineer time-dependent degradation features, compare four regression models, test different RUL caps, and evaluate an LSTM and ensemble approach.</p>
+                <p>I built the full workflow in Python, from cleaning and preparing the FD001 dataset to feature engineering and model evaluation. I compared multiple regression models, tested different RUL caps, trained an LSTM on 30-cycle sensor sequences, and combined the strongest models in an ensemble.</p>
               </article>
               <article>
                 <h3>The Results</h3>
-                <p>The models captured the general degradation trend, particularly near failure. Shared error patterns showed that representing sensor history—not simply adding algorithms—was the key limitation and guided the next modeling iterations.</p>
+                <p>The models were able to capture the overall degradation trend, with the best predictions occurring as engines approached failure. Comparing the models also showed that <strong>how the sensor history was represented mattered just as much as the choice of algorithm</strong>, which became the main focus for improving the model.</p>
               </article>
             </div>
 
