@@ -195,8 +195,13 @@ h1 {
   border-radius: 1.1rem;
 }
 
+.portrait-wrap {
+  box-sizing: border-box;
+}
+
 .portrait-wrap img {
-  height: calc(100% - 0.9rem);
+  display: block;
+  box-sizing: border-box;
 }
 
 .discipline-list {
