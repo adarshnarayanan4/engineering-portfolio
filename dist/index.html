@@ -50,12 +50,11 @@
         <h2 class="projects-heading" id="projects-title">Projects and Experience</h2>
         <div class="case-intro cadre-case-intro">
           <div class="case-intro-copy">
-            <p class="case-kicker">Georgia Tech Structures &amp; MDO Group · Active research</p>
             <header class="case-header">
               <h3 id="cadre-title">AMIGO/CADRE: Multidisciplinary Spacecraft Modeling</h3>
             </header>
 
-            <p class="case-lede">Through Georgia Tech’s Structures and Multidisciplinary Design Optimization Group, I am developing computational components in AMIGO using the open-source CADRE spacecraft design problem as a benchmark. Each discipline is treated as its own engineering problem, then validated before it is connected to the larger multidisciplinary model. The first completed module focuses on orbit propagation; additional CADRE problems will be added as the research develops.</p>
+            <p class="case-lede">Through Georgia Tech’s Structures and Multidisciplinary Design Optimization Group, I am using AMIGO, an engineering modeling and optimization framework, to reproduce and study disciplines from CADRE, an open-source multidisciplinary spacecraft design benchmark. The research focuses on building, validating, and connecting physics-based computational components for system-level analysis and design optimization.</p>
             <div class="cadre-repo-links" aria-label="Project repositories">
               <a href="https://github.com/smdogroup/amigo" target="_blank" rel="noopener noreferrer">AMIGO Repository</a>
               <a href="https://github.com/OpenMDAO/CADRE" target="_blank" rel="noopener noreferrer">CADRE Repository</a>
@@ -76,33 +75,21 @@
           <div class="project-details-content">
             <section class="cadre-map" aria-labelledby="cadre-map-title">
               <div class="cadre-map-heading">
-                <p class="case-kicker">Project map</p>
                 <h3 id="cadre-map-title">One multidisciplinary model, built problem by problem.</h3>
               </div>
               <div class="cadre-map-route" aria-label="CADRE problem map">
-                <div class="map-node map-node-core"><span>CADRE benchmark</span><strong>System model</strong></div>
-                <span class="map-connector" aria-hidden="true">→</span>
-                <div class="map-node map-node-framework"><span>AMIGO</span><strong>Computational framework</strong></div>
-                <span class="map-connector" aria-hidden="true">→</span>
-                <a class="map-node map-node-active" href="#cadre-orbit"><span>Problem 01 · Complete</span><strong>Orbit</strong></a>
-                <span class="map-connector map-connector-muted" aria-hidden="true">→</span>
-                <div class="map-node map-node-future"><span>Research continuing</span><strong>More problems to come</strong></div>
-              </div>
-            </section>
-
-            <section class="cadre-problem" id="cadre-orbit" aria-labelledby="cadre-orbit-title">
+                <div class="map-node map-node-core"><strong>CADRE</strong></div>
+                <span class="map-connector map-connector-one" aria-hidden="true">→</span>
+                <div class="map-node map-node-framework"><strong>AMIGO</strong></div>
+                <span class="map-connector map-connector-two" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-orbit">
+                  <strong>Problem 1: Orbit</strong>
+                </button>
+                <section class="cadre-problem" id="cadre-orbit" aria-labelledby="cadre-orbit-title" hidden>
               <header class="cadre-problem-header">
-                <p class="case-kicker">CADRE Problem 01</p>
                 <h3 id="cadre-orbit-title">Orbit</h3>
                 <p>Six-state spacecraft propagation, AMIGO implementation, and numerical validation against an independent RK4 reference.</p>
               </header>
-
-              <ol class="cadre-process" aria-label="CADRE orbit modeling workflow">
-                <li><span>01</span><h4>Initial state</h4><p>Orbital elements → ECI position and velocity</p></li>
-                <li><span>02</span><h4>Physics model</h4><p>J2, J3, and J4 gravitational perturbations</p></li>
-                <li><span>03</span><h4>Propagation</h4><p>Full-orbit integration using RK4</p></li>
-                <li><span>04</span><h4>Validation</h4><p>AMIGO compared against independent reference</p></li>
-              </ol>
 
               <div class="story-grid cadre-story-grid">
                 <article>
@@ -121,7 +108,6 @@
 
               <section class="cadre-figure-section" aria-labelledby="reference-solution-title">
                 <header class="cadre-figure-heading">
-                  <p class="case-kicker">Reference solution</p>
                   <h4 id="reference-solution-title">Propagated trajectory and state history</h4>
                 </header>
                 <div class="cadre-figure-grid">
@@ -138,7 +124,6 @@
 
               <section class="cadre-figure-section" aria-labelledby="validation-title">
                 <header class="cadre-figure-heading">
-                  <p class="case-kicker">Validation</p>
                   <h4 id="validation-title">Independent reference vs. AMIGO</h4>
                 </header>
                 <div class="cadre-figure-grid">
@@ -155,7 +140,6 @@
 
               <section class="cadre-figure-section" aria-labelledby="error-analysis-title">
                 <header class="cadre-figure-heading">
-                  <p class="case-kicker">Error analysis</p>
                   <h4 id="error-analysis-title">Difference across the propagated orbit</h4>
                 </header>
                 <div class="cadre-figure-grid cadre-error-grid">
@@ -188,6 +172,10 @@
                   <li>Aerospace Systems</li>
                 </ul>
               </section>
+                </section>
+                <span class="map-connector map-connector-three map-connector-muted" aria-hidden="true">→</span>
+                <div class="map-node map-node-future"><strong>More problems to come</strong></div>
+              </div>
             </section>
           </div>
         </details>
@@ -440,5 +428,15 @@
         <a href="Adarsh-Narayanan-Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
       </div>
     </footer>
+    <script>
+      const orbitButton = document.querySelector(".cadre-module-button");
+      const orbitDetails = document.getElementById("cadre-orbit");
+
+      orbitButton?.addEventListener("click", () => {
+        const isOpen = orbitButton.getAttribute("aria-expanded") === "true";
+        orbitButton.setAttribute("aria-expanded", String(!isOpen));
+        orbitDetails.hidden = isOpen;
+      });
+    </script>
   </body>
 </html>
