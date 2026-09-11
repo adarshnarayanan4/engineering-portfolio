@@ -46,8 +46,85 @@
         </div>
       </section>
 
-      <section class="case-study" id="work" aria-labelledby="projects-title">
+      <section class="case-study cadre-case-study" id="work" aria-labelledby="projects-title cadre-title">
         <h2 class="projects-heading" id="projects-title">Projects and Experience</h2>
+        <div class="case-intro cadre-case-intro">
+          <div class="case-intro-copy">
+            <p class="case-kicker">Georgia Tech Structures &amp; MDO Group · Active research</p>
+            <header class="case-header">
+              <h3 id="cadre-title">AMIGO/CADRE: Multidisciplinary Spacecraft Modeling</h3>
+            </header>
+
+            <p class="case-lede">Through Georgia Tech’s Structures and Multidisciplinary Design Optimization Group, I am developing computational components in AMIGO using engineering problems based on NASA/JPL’s CADRE mission. The current phase focuses on a six-state spacecraft orbit model: converting orbital elements into an Earth-centered state, modeling higher-order gravity effects, propagating the trajectory numerically, and validating the implementation against the original CADRE equations. This is active research, with broader multidisciplinary integration and optimization planned as the model develops.</p>
+          </div>
+
+          <figure class="cadre-feature">
+            <img src="assets/cadre-reference-orbit.png" alt="Three-dimensional CADRE reference orbit propagated around Earth" />
+          </figure>
+        </div>
+
+        <details class="project-details">
+          <summary>
+            <span class="details-closed-label">View Project Details</span>
+            <span class="details-open-label">Hide Project Details</span>
+          </summary>
+
+          <div class="project-details-content">
+            <div class="cadre-flow" aria-label="CADRE orbit modeling workflow">
+              <article><span>01</span><h3>Mission model</h3><p>Defined the six-state orbit problem, initial orbital elements, and validation requirements.</p></article>
+              <article><span>02</span><h3>Physics implementation</h3><p>Modeled Earth gravity with J2, J3, and J4 perturbation terms in Python.</p></article>
+              <article><span>03</span><h3>Numerical propagation</h3><p>Advanced position and velocity through a complete orbit using fourth-order Runge-Kutta integration.</p></article>
+              <article><span>04</span><h3>Validation baseline</h3><p>Compared the implementation directly with the original CADRE equations before AMIGO integration.</p></article>
+            </div>
+
+            <div class="story-grid cadre-story-grid">
+              <article>
+                <h3>The Problem</h3>
+                <p>Multidisciplinary spacecraft models require several physical systems to work together while satisfying competing constraints. Each component must first be reliable on its own before it can support system-level optimization.</p>
+              </article>
+              <article>
+                <h3>My Approach</h3>
+                <p>I built an independent Python reference model with orbital-element conversion, coordinate transformations, J2/J3/J4 gravity perturbations, and RK4 integration. That implementation provides a trusted baseline for translating the orbit physics into AMIGO.</p>
+              </article>
+              <article>
+                <h3>Validation</h3>
+                <p>The model propagated a complete 94.6-minute orbit and matched the original CADRE state-derivative and RK4 equations to near machine precision. This establishes the reference needed for continued multidisciplinary integration.</p>
+              </article>
+            </div>
+
+            <div class="cadre-metrics" aria-label="Orbit model validation metrics">
+              <div><strong>94.6 min</strong><span>propagated orbital period</span></div>
+              <div><strong>493.7–500.0 km</strong><span>altitude range with perturbations</span></div>
+              <div><strong>&lt; 1 × 10<sup>−12</sup></strong><span>maximum one-step RK4 difference</span></div>
+            </div>
+
+            <div class="analysis-gallery cadre-analysis-gallery" aria-label="CADRE orbit model plots">
+              <figure>
+                <div class="analysis-frame"><img src="assets/cadre-state-history.png" alt="Altitude and speed histories over one propagated orbit" /></div>
+                <figcaption><strong>State-history behavior</strong><span>Altitude and velocity magnitude tracked across one complete orbital period.</span></figcaption>
+              </figure>
+              <figure>
+                <div class="analysis-frame"><img src="assets/cadre-equation-validation.png" alt="Maximum state derivative and RK4 differences over one orbit" /></div>
+                <figcaption><strong>Equation-level validation</strong><span>Reference and original CADRE formulations remained consistent to numerical precision.</span></figcaption>
+              </figure>
+            </div>
+
+            <section class="project-skills" aria-labelledby="cadre-skills-title">
+              <h3 id="cadre-skills-title">Skills</h3>
+              <ul>
+                <li>Python</li>
+                <li>Orbital Mechanics</li>
+                <li>Numerical Methods</li>
+                <li>Scientific Computing</li>
+                <li>Model Validation</li>
+                <li>Multidisciplinary Design Optimization</li>
+              </ul>
+            </section>
+          </div>
+        </details>
+      </section>
+
+      <section class="case-study" aria-labelledby="stringer-title">
         <div class="case-intro">
           <div class="case-intro-copy">
             <header class="case-header">
@@ -273,25 +350,6 @@
             </section>
           </div>
         </details>
-      </section>
-
-      <section class="project-index" aria-labelledby="more-work-title">
-        <div class="section-heading">
-          <p class="eyebrow">Additional work · 04</p>
-          <h2 id="more-work-title">Engineering across disciplines.</h2>
-        </div>
-
-        <div class="project-list">
-          <article class="project-row">
-            <div class="project-number">04</div>
-            <div class="project-title">
-              <p>Spacecraft modeling · Python</p>
-              <h3>AMIGO Spacecraft Research</h3>
-            </div>
-            <p class="project-description">Reproduced NASA/JPL CADRE engineering problems in AMIGO, including a six-state spacecraft orbit model validated against reference solutions.</p>
-            <div class="project-result"><strong>94%</strong><span>trajectory error reduction</span></div>
-          </article>
-        </div>
       </section>
 
       <section class="about-section" id="about" aria-labelledby="about-title">
