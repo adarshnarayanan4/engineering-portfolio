@@ -247,6 +247,7 @@ h1 {
 }
 
 .case-study {
+  --section-gap: clamp(3rem, 5vw, 4.5rem);
   padding: clamp(5rem, 9vw, 9rem) max(1.5rem, calc((100vw - var(--max)) / 2));
   background: var(--white);
 }
@@ -263,7 +264,6 @@ h1 {
 }
 
 .case-header h3 {
-  max-width: 900px;
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.8rem, 3.3vw, 3.15rem);
@@ -281,12 +281,12 @@ h2 {
   letter-spacing: -.04em;
 }
 
-.case-lede { max-width: 920px; margin: 3rem 0 4rem; font-size: clamp(1.4rem, 2.5vw, 2.25rem); line-height: 1.35; letter-spacing: -.025em; }
+.case-lede { width: 100%; margin: var(--section-gap) 0; font-size: clamp(1.4rem, 2.5vw, 2.25rem); line-height: 1.35; letter-spacing: -.025em; }
 
 .process-gallery {
   --frame-height: clamp(250px, 24vw, 330px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 44px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr) 56px minmax(0, 1fr);
   align-items: start;
 }
 
@@ -300,14 +300,14 @@ figcaption strong { font-size: 1rem; }
 figcaption span { color: var(--ink-soft); font-size: .87rem; line-height: 1.45; }
 
 .process-line { display: flex; height: var(--frame-height); align-items: center; justify-content: center; }
-.process-line span { position: relative; width: 42px; height: 1px; background: var(--ink); }
-.process-line span::after { content: ""; position: absolute; right: 0; top: -4px; width: 8px; height: 8px; border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); transform: rotate(45deg); }
+.process-line span { position: relative; width: 26px; height: 1px; background: var(--ink); }
+.process-line span::after { content: ""; position: absolute; right: 0; top: -3px; width: 6px; height: 6px; border-top: 1px solid var(--ink); border-right: 1px solid var(--ink); transform: rotate(45deg); }
 
 .story-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  margin-top: 6rem;
+  margin-top: var(--section-gap);
   background: var(--line);
   border: 1px solid var(--line);
 }
@@ -317,7 +317,7 @@ figcaption span { color: var(--ink-soft); font-size: .87rem; line-height: 1.45; 
 .story-grid p { margin-bottom: 0; color: var(--ink-soft); }
 
 .project-skills {
-  margin-top: 2.5rem;
+  margin-top: var(--section-gap);
   padding: clamp(1.5rem, 3vw, 2.25rem);
   background: var(--paper);
   border-left: 4px solid var(--signal);
