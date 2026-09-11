@@ -195,6 +195,11 @@ h1 {
   border-radius: 1.1rem;
 }
 
+.portrait-wrap img {
+  display: block;
+  clip-path: inset(0 round 1.1rem);
+}
+
 .discipline-list {
   display: flex;
   flex-wrap: wrap;
