@@ -196,12 +196,14 @@ h1 {
 }
 
 .portrait-wrap {
-  box-sizing: border-box;
+  position: relative;
 }
 
 .portrait-wrap img {
-  display: block;
-  box-sizing: border-box;
+  position: absolute;
+  inset: .45rem;
+  width: calc(100% - .9rem);
+  height: calc(100% - .9rem);
 }
 
 .discipline-list {
