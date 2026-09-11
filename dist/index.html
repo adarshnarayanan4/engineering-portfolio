@@ -97,12 +97,12 @@
                 <p>Six-state spacecraft propagation, AMIGO implementation, and numerical validation against an independent RK4 reference.</p>
               </header>
 
-              <div class="cadre-flow" aria-label="CADRE orbit modeling workflow">
-                <article><span>01</span><h3>Initial state</h3><p>Converted orbital elements into Earth-centered position and velocity.</p></article>
-                <article><span>02</span><h3>Physics model</h3><p>Included J2, J3, and J4 gravitational perturbations.</p></article>
-                <article><span>03</span><h3>Propagation</h3><p>Advanced the state through a full orbit with RK4 integration.</p></article>
-                <article><span>04</span><h3>AMIGO validation</h3><p>Compared the framework solution with the independent reference and across three time grids.</p></article>
-              </div>
+              <ol class="cadre-process" aria-label="CADRE orbit modeling workflow">
+                <li><span>01</span><h4>Initial state</h4><p>Orbital elements → ECI position and velocity</p></li>
+                <li><span>02</span><h4>Physics model</h4><p>J2, J3, and J4 gravitational perturbations</p></li>
+                <li><span>03</span><h4>Propagation</h4><p>Full-orbit integration using RK4</p></li>
+                <li><span>04</span><h4>Validation</h4><p>AMIGO compared against independent reference</p></li>
+              </ol>
 
               <div class="story-grid cadre-story-grid">
                 <article>
@@ -119,42 +119,63 @@
                 </article>
               </div>
 
-              <div class="cadre-metrics" aria-label="Orbit model validation metrics">
-                <div><strong>94.6 min</strong><span>propagated orbital period</span></div>
-                <div><strong>493.7–500.0 km</strong><span>altitude range with perturbations</span></div>
-                <div><strong>&lt; 1 × 10<sup>−12</sup></strong><span>maximum one-step RK4 difference</span></div>
-              </div>
+              <section class="cadre-figure-section" aria-labelledby="reference-solution-title">
+                <header class="cadre-figure-heading">
+                  <p class="case-kicker">Reference solution</p>
+                  <h4 id="reference-solution-title">Propagated trajectory and state history</h4>
+                </header>
+                <div class="cadre-figure-grid">
+                  <figure class="figure-card">
+                    <div class="figure-media figure-media-3d"><img src="assets/cadre-reference-orbit.png" alt="Three-dimensional reference orbit propagated around Earth" /></div>
+                    <figcaption><strong>Reference trajectory</strong><span>The independently propagated 94.6-minute orbit used as the validation baseline.</span></figcaption>
+                  </figure>
+                  <figure class="figure-card">
+                    <div class="figure-media"><img src="assets/cadre-state-history.png" alt="Altitude and speed histories over one propagated orbit" /></div>
+                    <figcaption><strong>State-history behavior</strong><span>Altitude remained between 493.7 and 500.0 km while velocity magnitude was tracked across the orbit.</span></figcaption>
+                  </figure>
+                </div>
+              </section>
 
-              <div class="analysis-gallery cadre-analysis-gallery" aria-label="CADRE orbit model plots">
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-reference-orbit.png" alt="Three-dimensional reference orbit propagated around Earth" /></div>
-                  <figcaption><strong>Reference trajectory</strong><span>The independently propagated three-dimensional orbit used as the validation baseline.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-state-history.png" alt="Altitude and speed histories over one propagated orbit" /></div>
-                  <figcaption><strong>State-history behavior</strong><span>Altitude and velocity magnitude tracked across one complete orbital period.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-equation-validation.png" alt="Maximum state derivative and RK4 differences over one orbit" /></div>
-                  <figcaption><strong>Equation-level validation</strong><span>Reference and original CADRE formulations remained consistent to numerical precision.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-amigo-rk4-orbit.png" alt="AMIGO and RK4 three-dimensional orbit trajectories overlaid" /></div>
-                  <figcaption><strong>Trajectory comparison</strong><span>The AMIGO solution overlaid with the independent RK4 reference trajectory.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-position-difference.png" alt="AMIGO versus RK4 position difference over time" /></div>
-                  <figcaption><strong>Position difference</strong><span>Position error tracked throughout the 568-interval orbit solution.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-velocity-difference.png" alt="AMIGO versus RK4 velocity difference over time" /></div>
-                  <figcaption><strong>Velocity difference</strong><span>Velocity error tracked throughout the same orbit solution.</span></figcaption>
-                </figure>
-                <figure>
-                  <div class="analysis-frame"><img src="assets/cadre-grid-convergence.png" alt="AMIGO orbit position difference across three time-step sizes" /></div>
+              <section class="cadre-figure-section" aria-labelledby="validation-title">
+                <header class="cadre-figure-heading">
+                  <p class="case-kicker">Validation</p>
+                  <h4 id="validation-title">Independent reference vs. AMIGO</h4>
+                </header>
+                <div class="cadre-figure-grid">
+                  <figure class="figure-card">
+                    <div class="figure-media"><img src="assets/cadre-equation-validation.png" alt="Maximum state derivative and RK4 differences over one orbit" /></div>
+                    <figcaption><strong>Equation-level validation</strong><span>Reference and original CADRE formulations agreed to numerical precision, with one-step RK4 differences below 1 × 10<sup>−12</sup>.</span></figcaption>
+                  </figure>
+                  <figure class="figure-card">
+                    <div class="figure-media figure-media-3d"><img src="assets/cadre-amigo-rk4-orbit.png" alt="AMIGO and RK4 three-dimensional orbit trajectories overlaid" /></div>
+                    <figcaption><strong>Trajectory comparison</strong><span>The AMIGO solution overlaid with the independent RK4 reference trajectory.</span></figcaption>
+                  </figure>
+                </div>
+              </section>
+
+              <section class="cadre-figure-section" aria-labelledby="error-analysis-title">
+                <header class="cadre-figure-heading">
+                  <p class="case-kicker">Error analysis</p>
+                  <h4 id="error-analysis-title">Difference across the propagated orbit</h4>
+                </header>
+                <div class="cadre-figure-grid cadre-error-grid">
+                  <figure class="figure-card">
+                    <div class="figure-media"><img src="assets/cadre-position-difference.png" alt="AMIGO versus RK4 position difference over time" /></div>
+                    <figcaption><strong>Position difference</strong><span>Position error across the 568-interval orbit solution.</span></figcaption>
+                  </figure>
+                  <figure class="figure-card">
+                    <div class="figure-media"><img src="assets/cadre-velocity-difference.png" alt="AMIGO versus RK4 velocity difference over time" /></div>
+                    <figcaption><strong>Velocity difference</strong><span>Velocity error across the same propagation.</span></figcaption>
+                  </figure>
+                </div>
+              </section>
+
+              <section class="cadre-figure-section cadre-convergence-section" aria-label="Grid convergence analysis">
+                <figure class="figure-card">
+                  <div class="figure-media"><img src="assets/cadre-grid-convergence.png" alt="AMIGO orbit position difference across three time-step sizes" /></div>
                   <figcaption><strong>Grid convergence</strong><span>Maximum position difference decreases as the time step is refined from 284 to 1,136 intervals.</span></figcaption>
                 </figure>
-              </div>
+              </section>
 
               <section class="project-skills" aria-labelledby="cadre-skills-title">
                 <h3 id="cadre-skills-title">Skills</h3>
@@ -261,7 +282,7 @@
           </div>
 
           <figure class="ml-feature">
-            <img src="assets/cmapss-model-comparison.png" alt="Actual NASA remaining useful life compared with four machine-learning model predictions" />
+            <img src="assets/nasa-jet-engine.webp" alt="Cutaway view of a turbofan jet engine" />
           </figure>
         </div>
 
@@ -272,13 +293,6 @@
           </summary>
 
           <div class="project-details-content">
-            <div class="ml-pipeline" aria-label="Machine-learning workflow">
-              <div><span>01</span><strong>Sensor histories</strong><p>Used 21 sensor measurements and three operating settings from simulated turbofan engines, tracked across each engine’s life cycle.</p></div>
-              <div><span>02</span><strong>Feature engineering</strong><p>Built time-dependent features such as rolling averages, sensor trends, cycle-to-cycle changes, and deviation from early-life behavior.</p></div>
-              <div><span>03</span><strong>Model comparison</strong><p>Compared tree-based regression models, an LSTM using 30-cycle sequences, and an ensemble that combined their predictions.</p></div>
-              <div><span>04</span><strong>Maintenance risk</strong><p>Converted Remaining Useful Life predictions into high-, moderate-, and low-risk groups to make the results easier to use for maintenance decisions.</p></div>
-            </div>
-
             <div class="story-grid">
               <article>
                 <h3>The What</h3>
@@ -295,6 +309,10 @@
             </div>
 
             <div class="analysis-gallery" aria-label="C-MAPSS model analysis">
+              <figure>
+                <div class="analysis-frame"><img src="assets/cmapss-model-comparison.png" alt="Actual remaining useful life compared with four machine-learning model predictions" /></div>
+                <figcaption><strong>Model comparison</strong><span>Actual RUL compared with four tree-based regression models across the test engines.</span></figcaption>
+              </figure>
               <figure>
                 <div class="analysis-frame"><img src="assets/cmapss-engine-predictions.png" alt="Random Forest and Gradient Boosting predictions compared with actual remaining useful life for 100 test engines" /></div>
                 <figcaption><strong>Prediction comparison</strong><span>Actual NASA RUL compared with the two baseline models across the test fleet.</span></figcaption>
@@ -344,13 +362,6 @@
           </summary>
 
           <div class="project-details-content">
-            <div class="ml-pipeline" aria-label="Combustion research workflow">
-              <div><span>01</span><strong>Simulate conditions</strong><p>Modeled ammonia combustion in ANSYS Chemkin across equivalence ratios from 0.8 to 1.4.</p></div>
-              <div><span>02</span><strong>Process outputs</strong><p>Extracted simulation data and organized the results for analysis in Excel and MATLAB.</p></div>
-              <div><span>03</span><strong>Compare profiles</strong><p>Created corrected and uncorrected plots for temperature, NO, NH, and NH₂ behavior.</p></div>
-              <div><span>04</span><strong>Interpret trends</strong><p>Compared operating conditions to evaluate flame stability, emissions, and energy efficiency.</p></div>
-            </div>
-
             <div class="story-grid">
               <article>
                 <h3>The What</h3>
