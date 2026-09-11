@@ -125,23 +125,85 @@
         </details>
       </section>
 
+      <section class="case-study ml-case-study" aria-labelledby="cmapss-title">
+        <div class="case-intro ml-case-intro">
+          <div class="case-intro-copy">
+            <header class="case-header">
+              <h3 id="cmapss-title">Jet Engine Remaining Useful Life Prediction</h3>
+            </header>
+
+            <p class="case-lede">I built a predictive-maintenance pipeline using NASA’s C-MAPSS FD001 sensor histories to estimate how many operating cycles remained before simulated turbofan failure. I compared four tree-based regressors, analyzed where their predictions broke down, and then expanded the workflow with time-dependent features, multiple RUL caps, a 30-cycle LSTM, and an ensemble model. The project connects machine-learning performance to an engineering decision: identifying which engines should receive maintenance attention first.</p>
+          </div>
+
+          <figure class="ml-feature">
+            <img src="assets/cmapss-model-comparison.png" alt="Actual NASA remaining useful life compared with four machine-learning model predictions" />
+          </figure>
+        </div>
+
+        <details class="project-details">
+          <summary>
+            <span class="details-closed-label">View Project Details</span>
+            <span class="details-open-label">Hide Project Details</span>
+          </summary>
+
+          <div class="project-details-content">
+            <div class="ml-pipeline" aria-label="Machine-learning workflow">
+              <div><span>01</span><strong>Sensor histories</strong><p>Three operating settings and 21 sensor measurements across engine cycles.</p></div>
+              <div><span>02</span><strong>Feature engineering</strong><p>Rolling statistics, sensor slopes, cycle differences, and baseline deviation.</p></div>
+              <div><span>03</span><strong>Model comparison</strong><p>Tree-based regressors, a 30-cycle LSTM, and a blended ensemble.</p></div>
+              <div><span>04</span><strong>Maintenance risk</strong><p>RUL predictions translated into high, moderate, and low-risk categories.</p></div>
+            </div>
+
+            <div class="story-grid">
+              <article>
+                <h3>The What</h3>
+                <p>The goal was to estimate Remaining Useful Life from simulated turbofan sensor data. A useful result needed to do more than predict a number—it needed to support inspection and maintenance prioritization before failure.</p>
+              </article>
+              <article>
+                <h3>The How</h3>
+                <p>I created a Python workflow to prepare the FD001 data, engineer time-dependent degradation features, compare four regression models, test different RUL caps, and evaluate an LSTM and ensemble approach.</p>
+              </article>
+              <article>
+                <h3>The Results</h3>
+                <p>The models captured the general degradation trend, particularly near failure. Shared error patterns showed that representing sensor history—not simply adding algorithms—was the key limitation and guided the next modeling iterations.</p>
+              </article>
+            </div>
+
+            <div class="analysis-gallery" aria-label="C-MAPSS model analysis">
+              <figure>
+                <div class="analysis-frame"><img src="assets/cmapss-engine-predictions.png" alt="Random Forest and Gradient Boosting predictions compared with actual remaining useful life for 100 test engines" /></div>
+                <figcaption><strong>Prediction comparison</strong><span>Actual NASA RUL compared with the two baseline models across the test fleet.</span></figcaption>
+              </figure>
+              <figure>
+                <div class="analysis-frame"><img src="assets/cmapss-model-errors.png" alt="Absolute prediction error by engine for Random Forest and Gradient Boosting models" /></div>
+                <figcaption><strong>Error analysis</strong><span>Engine-level errors revealed where different models struggled on the same cases.</span></figcaption>
+              </figure>
+            </div>
+
+            <section class="project-skills" aria-labelledby="cmapss-skills-title">
+              <h3 id="cmapss-skills-title">Skills</h3>
+              <ul>
+                <li>Python</li>
+                <li>Pandas</li>
+                <li>Scikit-learn</li>
+                <li>TensorFlow/Keras</li>
+                <li>Feature Engineering</li>
+                <li>Model Evaluation</li>
+              </ul>
+            </section>
+
+            <a class="repository-link" href="https://github.com/adarshnarayanan4/jet-engine-rul-prediction" target="_blank" rel="noreferrer">View project on GitHub →</a>
+          </div>
+        </details>
+      </section>
+
       <section class="project-index" aria-labelledby="more-work-title">
         <div class="section-heading">
-          <p class="eyebrow">Selected work · 02–04</p>
+          <p class="eyebrow">Additional work · 03–04</p>
           <h2 id="more-work-title">Engineering across disciplines.</h2>
         </div>
 
         <div class="project-list">
-          <article class="project-row">
-            <div class="project-number">02</div>
-            <div class="project-title">
-              <p>Machine learning · Python</p>
-              <h3>AI-Powered Jet Engine Predictive Maintenance</h3>
-            </div>
-            <p class="project-description">Built a Python pipeline for more than 20,000 NASA C-MAPSS sensor records and compared models for predicting turbofan degradation.</p>
-            <div class="project-result"><strong>12%</strong><span>lower RMSE than baseline</span></div>
-          </article>
-
           <article class="project-row">
             <div class="project-number">03</div>
             <div class="project-title">
