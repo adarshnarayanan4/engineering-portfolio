@@ -364,9 +364,27 @@ footer {
 .footer-links { display: flex; gap: 1.5rem; padding-bottom: .3rem; }
 
 @media (max-width: 920px) {
-  .site-header { min-height: 84px; }
-  .header-actions { gap: 1rem; }
-  .primary-nav { gap: .9rem; }
+  .site-header {
+    min-height: auto;
+    padding: 2rem 0 2.5rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.3rem;
+  }
+  .brand {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    text-align: center;
+  }
+  .header-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .primary-nav { gap: clamp(.9rem, 3vw, 1.5rem); }
+  .primary-nav a { font-size: 1.15rem; }
+  .primary-nav .contact-link { padding: .58rem 1rem; }
+  .social-links { gap: .65rem; }
+  .icon-link { width: 2.1rem; height: 2.1rem; }
+  .icon-link svg { width: 1.3rem; height: 1.3rem; }
   .hero { min-height: auto; grid-template-columns: 1fr; }
   .hero-visual { min-height: 420px; }
   .process-gallery { grid-template-columns: 1fr; gap: 2rem; }
@@ -385,18 +403,18 @@ footer {
   .site-header {
     width: min(calc(100% - 2rem), var(--max));
     min-height: auto;
-    padding: 1rem 0;
-    flex-wrap: wrap;
-    gap: .85rem;
+    padding: 1.5rem 0 1.75rem;
+    flex-wrap: nowrap;
+    gap: 1rem;
   }
-  .brand { width: 100%; font-size: 1.45rem; }
-  .header-actions { width: 100%; justify-content: space-between; gap: .55rem; }
-  .primary-nav { gap: .7rem; }
-  .primary-nav a { font-size: .88rem; }
-  .primary-nav .contact-link { padding: .45rem .62rem; }
-  .social-links { gap: .15rem; }
-  .icon-link { width: 1.75rem; height: 1.75rem; }
-  .icon-link svg { width: 1.05rem; height: 1.05rem; }
+  .brand { width: auto; font-size: clamp(1.7rem, 8vw, 2.15rem); }
+  .header-actions { width: auto; justify-content: center; gap: .85rem; }
+  .primary-nav { gap: .65rem; }
+  .primary-nav a { font-size: clamp(.88rem, 4vw, 1rem); }
+  .primary-nav .contact-link { padding: .48rem .68rem; }
+  .social-links { gap: .45rem; }
+  .icon-link { width: 1.9rem; height: 1.9rem; }
+  .icon-link svg { width: 1.18rem; height: 1.18rem; }
   .hero { width: min(calc(100% - 2rem), var(--max)); padding: 3.5rem 0 4rem; gap: 2.5rem; }
   h1 { font-size: clamp(3.2rem, 16vw, 4.6rem); }
   .hero-visual { min-height: 330px; padding-inline: 1rem; }
