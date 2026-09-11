@@ -307,12 +307,81 @@ h2 {
   width: 100%;
   margin: 0;
   justify-self: end;
-  padding: .45rem;
+  padding: .35rem;
   background: var(--paper);
   border: 2px solid var(--signal);
 }
 
-.cadre-feature img { width: 100%; height: auto; }
+.cadre-feature img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+
+.cadre-repo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin-top: 1.5rem;
+}
+
+.cadre-repo-links a {
+  padding: .7rem 1rem;
+  color: var(--ink);
+  border: 1px solid var(--signal);
+  font-size: .82rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.cadre-repo-links a:hover { color: var(--white); background: var(--signal); }
+
+.cadre-map {
+  margin-bottom: var(--section-gap);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--paper);
+  border-left: 5px solid var(--signal);
+}
+
+.cadre-map-heading { max-width: 700px; margin-bottom: 1.5rem; }
+.cadre-map-heading .case-kicker { margin-bottom: .55rem; }
+.cadre-map-heading h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.5rem, 2.7vw, 2.25rem); line-height: 1.15; }
+
+.cadre-map-route {
+  display: grid;
+  grid-template-columns: minmax(155px, 1fr) auto minmax(155px, 1fr) auto minmax(155px, 1fr) auto minmax(155px, 1fr);
+  align-items: stretch;
+  gap: .65rem;
+}
+
+.map-node {
+  display: flex;
+  min-height: 112px;
+  padding: 1.1rem;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.map-node span { margin-bottom: .45rem; color: var(--signal); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .68rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.map-node strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.05rem; line-height: 1.2; }
+.map-node-active { color: var(--white); background: var(--ink); border-color: var(--ink); }
+.map-node-active span { color: #c7b990; }
+.map-node-active:hover { background: var(--signal); border-color: var(--signal); }
+.map-node-future { opacity: .58; border-style: dashed; }
+.map-connector { display: grid; place-items: center; color: var(--signal); font-size: 1.45rem; }
+.map-connector-muted { opacity: .45; }
+
+.cadre-problem {
+  scroll-margin-top: 2rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.cadre-problem-header { max-width: 820px; margin-bottom: 2rem; }
+.cadre-problem-header .case-kicker { margin-bottom: .45rem; }
+.cadre-problem-header h3 { margin: 0 0 .65rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; }
+.cadre-problem-header > p:last-child { margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.6; }
 
 .cadre-flow {
   display: grid;
@@ -345,6 +414,8 @@ h2 {
 .cadre-metrics sup { font-size: .58em; }
 
 .cadre-analysis-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cadre-analysis-gallery figure:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.cadre-analysis-gallery figure:last-child:nth-child(odd) .analysis-frame { max-width: 760px; margin-inline: auto; }
 
 .vespula-feature {
   width: min(100%, 300px);
@@ -635,6 +706,9 @@ footer {
   .case-intro { grid-template-columns: 1fr; }
   .cadre-case-intro { grid-template-columns: 1fr; }
   .cadre-feature { justify-self: center; }
+  .cadre-map-route { grid-template-columns: 1fr; }
+  .map-node { min-height: 96px; }
+  .map-connector { min-height: 1.25rem; transform: rotate(90deg); }
   .cadre-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .vespula-feature { justify-self: center; width: min(100%, 300px); transform: none; }
   .ml-case-intro { grid-template-columns: 1fr; }
@@ -680,6 +754,8 @@ footer {
   .case-lede { margin-bottom: 3rem; }
   .cadre-flow { grid-template-columns: 1fr; }
   .cadre-metrics { grid-template-columns: 1fr; }
+  .cadre-repo-links { flex-direction: column; align-items: stretch; }
+  .cadre-repo-links a { text-align: center; }
   .image-frame { height: auto; aspect-ratio: 4 / 3; }
   .project-skills ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-row { grid-template-columns: 36px 1fr; }
