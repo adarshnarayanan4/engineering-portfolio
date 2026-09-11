@@ -281,7 +281,29 @@ h2 {
   letter-spacing: -.04em;
 }
 
-.case-lede { width: 100%; margin: var(--section-gap) 0; font-size: clamp(1.4rem, 2.5vw, 2.25rem); line-height: 1.35; letter-spacing: -.025em; }
+.case-lede { width: 100%; margin: var(--section-gap) 0 1.75rem; font-size: clamp(1.4rem, 2.5vw, 2.25rem); line-height: 1.35; letter-spacing: -.025em; }
+
+.project-details summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 50px;
+  padding: .8rem 1.2rem;
+  border: 1px solid var(--signal);
+  background: var(--signal);
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.project-details summary::-webkit-details-marker { display: none; }
+.project-details summary:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--teal); }
+.project-details summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+.details-open-label { display: none; }
+.project-details[open] .details-closed-label { display: none; }
+.project-details[open] .details-open-label { display: inline; }
+.project-details-content { margin-top: var(--section-gap); }
 
 .process-gallery {
   --frame-height: clamp(250px, 24vw, 330px);
