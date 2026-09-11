@@ -258,18 +258,25 @@ h1 {
   text-align: center;
 }
 
+.case-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(220px, .55fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+
 .case-header {
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .case-header h3 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.8rem, 3.3vw, 3.15rem);
+  font-size: clamp(1.65rem, 2.6vw, 2.45rem);
   font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -.035em;
+  line-height: 1.12;
+  letter-spacing: -.025em;
 }
 
 h2 {
@@ -281,7 +288,20 @@ h2 {
   letter-spacing: -.04em;
 }
 
-.case-lede { width: 100%; margin: var(--section-gap) 0 1.75rem; font-size: clamp(1.4rem, 2.5vw, 2.25rem); line-height: 1.35; letter-spacing: -.025em; }
+.case-lede { width: 100%; margin: 1.75rem 0 0; color: var(--ink-soft); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.65; }
+
+.vespula-feature {
+  width: min(100%, 300px);
+  margin: 0;
+  justify-self: end;
+  padding: .4rem;
+  background: var(--white);
+  border: 2px solid var(--signal);
+}
+
+.vespula-feature img { width: 100%; height: auto; }
+
+.project-details { margin-top: 1.75rem; }
 
 .project-details summary {
   display: inline-flex;
@@ -475,6 +495,8 @@ footer {
   .icon-link svg { width: 1.3rem; height: 1.3rem; }
   .hero { min-height: auto; grid-template-columns: 1fr; }
   .portrait-wrap { justify-self: center; width: min(100%, 390px); }
+  .case-intro { grid-template-columns: 1fr; }
+  .vespula-feature { justify-self: center; width: min(100%, 300px); }
   .process-gallery { grid-template-columns: 1fr; gap: 2.5rem; }
   .process-line { display: none; }
   .stage { width: min(100%, 680px); margin-inline: auto; }
