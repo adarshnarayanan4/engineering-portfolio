@@ -297,7 +297,7 @@ h2 {
   padding: .4rem;
   background: var(--white);
   border: 2px solid var(--signal);
-  transform: translateY(2rem);
+  transform: translateY(4rem);
 }
 
 .vespula-feature img { width: 100%; height: auto; }
