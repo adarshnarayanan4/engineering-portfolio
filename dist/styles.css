@@ -322,17 +322,15 @@ h2 {
 .research-case-intro { grid-template-columns: minmax(0, 1.05fr) minmax(380px, 1fr); }
 
 .research-feature {
-  width: 100%;
+  width: min(100%, 390px);
   margin: 0;
   justify-self: end;
-  padding: .45rem;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
+  padding: .35rem;
   background: var(--paper);
   border: 2px solid var(--signal);
 }
 
-.research-feature img { width: 100%; height: 100%; object-fit: contain; }
+.research-feature img { display: block; width: 100%; height: auto; }
 
 .project-details summary {
   display: inline-flex;
