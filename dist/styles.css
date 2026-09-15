@@ -328,7 +328,12 @@ h2 {
   border: 2px solid var(--signal);
 }
 
-.cadre-feature img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.cadre-feature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 .cadre-repo-links {
   display: flex;
