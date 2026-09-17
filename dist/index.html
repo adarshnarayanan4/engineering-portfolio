@@ -80,8 +80,34 @@
               </div>
               <div class="cadre-map-route" aria-label="CADRE problem map">
                 <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-orbit">
-                  <strong>Problem 1: Orbit</strong>
+                  <span class="module-number">01</span>
+                  <strong>Orbit</strong>
                 </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-attitude">
+                  <span class="module-number">02</span>
+                  <strong>Attitude</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-sun">
+                  <span class="module-number">03</span>
+                  <strong>Sun Geometry</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-thermal">
+                  <span class="module-number">04</span>
+                  <strong>Thermal</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-power">
+                  <span class="module-number">05</span>
+                  <strong>Power</strong>
+                </button>
+                <span class="map-connector map-connector-muted" aria-hidden="true">→</span>
+                <div class="map-node map-node-future"><strong>More problems to come</strong></div>
+              </div>
+
+              <div class="cadre-problems">
                 <section class="cadre-problem" id="cadre-orbit" aria-labelledby="cadre-orbit-title" hidden>
               <header class="cadre-problem-header">
                 <h3 id="cadre-orbit-title">Orbit</h3>
@@ -170,8 +196,122 @@
                 </ul>
               </section>
                 </section>
-                <span class="map-connector map-connector-three map-connector-muted" aria-hidden="true">→</span>
-                <div class="map-node map-node-future"><strong>More problems to come</strong></div>
+
+                <section class="cadre-problem" id="cadre-attitude" aria-labelledby="cadre-attitude-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-attitude-title">Attitude</h3>
+                    <p>Orbit-coupled spacecraft orientation, angular motion, control torque, and body-frame velocity.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Determine how the spacecraft body is oriented throughout its orbit and calculate the angular rates, angular accelerations, required torque, and velocity components seen in the body frame.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I formed the orbit-relative and commanded-roll rotation matrices, differentiated the combined orientation with forward, central, and backward schemes, and connected the resulting attitude equations to the AMIGO orbit solution.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>Using the same orbit, AMIGO reproduced the Python attitude model to numerical precision: the maximum orientation-matrix difference was 5.6 × 10<sup>−16</sup> and the torque difference was 1.5 × 10<sup>−20</sup> N·m.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-single-figure" aria-label="Attitude dynamics results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-attitude-dynamics.png" alt="Angular velocity and required attitude torque across one spacecraft orbit" /></div>
+                      <figcaption><strong>Attitude dynamics</strong><span>Body angular velocity and the torque required to maintain the orbit-relative attitude across the 94.6-minute propagation.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-sun" aria-labelledby="cadre-sun-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-sun-title">Sun Geometry</h3>
+                    <p>Inertial and body-frame Sun vectors, spherical pointing angles, and continuous eclipse transitions.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Track the Sun relative to the spacecraft and determine whether each point in the orbit is illuminated, eclipsed by Earth, or passing through a transition region.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I translated the Sun position into the spacecraft body frame, converted it to azimuth and elevation, and implemented the line-of-sight equations as separate AMIGO components for visible, eclipsed, and transition nodes.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>Across 569 nodes, the model identified 363 full-sunlight nodes, 145 full-eclipse nodes, and 61 transition nodes. Every AMIGO Sun output matched the independent reference exactly for the tested case.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-single-figure" aria-label="Sun geometry results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-sun-geometry.png" alt="Sun line of sight, azimuth, and elevation across one spacecraft orbit" /></div>
+                      <figcaption><strong>Illumination and body-frame angles</strong><span>The eclipse transition is tracked continuously while azimuth and elevation describe the Sun direction seen by the spacecraft.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-thermal" aria-labelledby="cadre-thermal-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-thermal-title">Thermal</h3>
+                    <p>Five-state thermal propagation driven by solar exposure, eclipse, radiation, and communication power.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Predict the temperatures of four panel groups and the spacecraft body as their heating conditions change through sunlight and eclipse.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I combined exposed solar-cell area, Sun line of sight, radiative cooling, material properties, and communication heating in a five-state model, then implemented its trapezoidal time integration in AMIGO.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the independent trapezoidal solution exactly. Temperatures remained between 189.5 and 280.2 K, while the maximum difference from the separate RK4 reference was 0.30 K.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-single-figure" aria-label="Thermal results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-thermal-history.png" alt="Five spacecraft thermal state histories across one orbit" /></div>
+                      <figcaption><strong>Thermal state histories</strong><span>Panel groups respond differently to the changing exposed area and eclipse state while the spacecraft body varies more gradually.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-power" aria-labelledby="cadre-power-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-power-title">Power</h3>
+                    <p>Solar-cell voltage interpolation, total generation, and spacecraft battery-power balance.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Calculate the electrical output of 12 solar panels and determine the remaining battery power after communication, reaction-wheel, and baseline spacecraft loads.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I rebuilt CADRE’s multidimensional voltage interpolation with a modern MBI implementation, evaluated each panel from temperature, exposed area, and current set point, and connected the solar and total-power equations in AMIGO.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the Python power equations exactly and reproduced the original CADRE benchmark within 1.22 × 10<sup>−4</sup> W for both solar and battery power.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-single-figure" aria-label="Power-system results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-power-history.png" alt="CADRE solar generation and battery power histories" /></div>
+                      <figcaption><strong>Generation and power balance</strong><span>Solar production changes with geometry and eclipse, while communication and reaction-wheel loads drive the battery-power demand.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
               </div>
             </section>
           </div>
@@ -502,13 +642,24 @@
       </div>
     </footer>
     <script>
-      const orbitButton = document.querySelector(".cadre-module-button");
-      const orbitDetails = document.getElementById("cadre-orbit");
+      const moduleButtons = document.querySelectorAll(".cadre-module-button");
 
-      orbitButton?.addEventListener("click", () => {
-        const isOpen = orbitButton.getAttribute("aria-expanded") === "true";
-        orbitButton.setAttribute("aria-expanded", String(!isOpen));
-        orbitDetails.hidden = isOpen;
+      moduleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = document.getElementById(button.getAttribute("aria-controls"));
+          const willOpen = button.getAttribute("aria-expanded") !== "true";
+
+          moduleButtons.forEach((otherButton) => {
+            const otherTarget = document.getElementById(otherButton.getAttribute("aria-controls"));
+            otherButton.setAttribute("aria-expanded", "false");
+            if (otherTarget) otherTarget.hidden = true;
+          });
+
+          if (willOpen && target) {
+            button.setAttribute("aria-expanded", "true");
+            target.hidden = false;
+          }
+        });
       });
     </script>
   </body>
