@@ -218,10 +218,14 @@
                     </article>
                   </div>
 
-                  <section class="cadre-figure-section cadre-single-figure" aria-label="Attitude dynamics results">
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Attitude dynamics results">
                     <figure class="figure-card">
-                      <div class="figure-media"><img src="assets/cadre-attitude-dynamics.png" alt="Angular velocity and required attitude torque across one spacecraft orbit" /></div>
-                      <figcaption><strong>Attitude dynamics</strong><span>Body angular velocity and the torque required to maintain the orbit-relative attitude across the 94.6-minute propagation.</span></figcaption>
+                      <div class="figure-media"><img src="assets/cadre-attitude-angular-velocity.png" alt="Spacecraft body angular velocity components across one orbit" /></div>
+                      <figcaption><strong>Body angular velocity</strong><span>The three body-axis angular velocity components across the 94.6-minute orbit.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-attitude-torque.png" alt="Required spacecraft attitude torque components across one orbit" /></div>
+                      <figcaption><strong>Required attitude torque</strong><span>The torque history required to maintain the orbit-relative spacecraft attitude.</span></figcaption>
                     </figure>
                   </section>
                 </section>
@@ -247,10 +251,14 @@
                     </article>
                   </div>
 
-                  <section class="cadre-figure-section cadre-single-figure" aria-label="Sun geometry results">
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Sun geometry results">
                     <figure class="figure-card">
-                      <div class="figure-media"><img src="assets/cadre-sun-geometry.png" alt="Sun line of sight, azimuth, and elevation across one spacecraft orbit" /></div>
-                      <figcaption><strong>Illumination and body-frame angles</strong><span>The eclipse transition is tracked continuously while azimuth and elevation describe the Sun direction seen by the spacecraft.</span></figcaption>
+                      <div class="figure-media"><img src="assets/cadre-sun-line-of-sight.png" alt="Sun line of sight and eclipse transition across one spacecraft orbit" /></div>
+                      <figcaption><strong>Illumination and eclipse</strong><span>The continuous line-of-sight state identifies full eclipse, full sunlight, and the transition between them.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-sun-body-angles.png" alt="Sun azimuth and elevation in the spacecraft body frame across one orbit" /></div>
+                      <figcaption><strong>Body-frame Sun angles</strong><span>Azimuth and elevation describe the Sun direction seen by the spacecraft throughout the orbit.</span></figcaption>
                     </figure>
                   </section>
                 </section>
@@ -276,7 +284,7 @@
                     </article>
                   </div>
 
-                  <section class="cadre-figure-section cadre-single-figure" aria-label="Thermal results">
+                  <section class="cadre-figure-section cadre-thermal-figure" aria-label="Thermal results">
                     <figure class="figure-card">
                       <div class="figure-media"><img src="assets/cadre-thermal-history.png" alt="Five spacecraft thermal state histories across one orbit" /></div>
                       <figcaption><strong>Thermal state histories</strong><span>Panel groups respond differently to the changing exposed area and eclipse state while the spacecraft body varies more gradually.</span></figcaption>
@@ -305,10 +313,14 @@
                     </article>
                   </div>
 
-                  <section class="cadre-figure-section cadre-single-figure" aria-label="Power-system results">
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Power-system results">
                     <figure class="figure-card">
-                      <div class="figure-media"><img src="assets/cadre-power-history.png" alt="CADRE solar generation and battery power histories" /></div>
-                      <figcaption><strong>Generation and power balance</strong><span>Solar production changes with geometry and eclipse, while communication and reaction-wheel loads drive the battery-power demand.</span></figcaption>
+                      <div class="figure-media"><img src="assets/cadre-solar-power.png" alt="CADRE solar power generation history" /></div>
+                      <figcaption><strong>Solar generation</strong><span>Generated power changes with illumination, spacecraft geometry, panel temperature, and the commanded current.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-battery-power.png" alt="CADRE spacecraft battery power history" /></div>
+                      <figcaption><strong>Battery power balance</strong><span>Communication, reaction-wheel, and baseline spacecraft loads determine the remaining battery power.</span></figcaption>
                     </figure>
                   </section>
                 </section>

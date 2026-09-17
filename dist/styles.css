@@ -481,8 +481,15 @@ h2 {
 .figure-card sup { font-size: .65em; }
 .cadre-convergence-section { width: min(72%, 820px); margin-inline: auto; }
 .cadre-convergence-section .figure-card { width: 100%; }
-.cadre-single-figure { width: min(82%, 960px); margin-inline: auto; }
-.cadre-single-figure .figure-card { width: 100%; }
+.cadre-figure-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--cadre-grid-gap);
+  width: 100%;
+}
+.cadre-figure-stack .figure-media { height: clamp(380px, 43vw, 540px); }
+.cadre-thermal-figure { width: 100%; }
+.cadre-thermal-figure .figure-media { height: clamp(440px, 52vw, 640px); }
 
 .vespula-feature {
   width: min(100%, 300px);
@@ -827,7 +834,8 @@ footer {
   .cadre-figure-grid { grid-template-columns: 1fr; }
   .snowbot-figure-grid { grid-template-columns: 1fr; }
   .cadre-convergence-section { width: 100%; }
-  .cadre-single-figure { width: 100%; }
+  .cadre-figure-stack .figure-media { height: clamp(280px, 75vw, 430px); }
+  .cadre-thermal-figure .figure-media { height: clamp(320px, 88vw, 500px); }
   .figure-card figcaption { min-height: auto; }
 }
 
