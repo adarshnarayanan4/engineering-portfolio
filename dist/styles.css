@@ -448,9 +448,10 @@ h2 {
 
 .figure-card {
   display: grid;
-  grid-template-rows: var(--cadre-figure-height) 1fr;
+  grid-template-rows: auto 1fr;
   min-width: 0;
   margin: 0;
+  overflow: hidden;
   background: var(--paper);
   border: 1px solid var(--line);
 }
