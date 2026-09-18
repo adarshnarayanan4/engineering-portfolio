@@ -7,6 +7,14 @@
     <title>Adarsh Narayanan's Portfolio</title>
     <link rel="icon" type="image/png" href="assets/favicon-logo-v2.png" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4Q9C3C8Q1C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-4Q9C3C8Q1C");
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#work">Skip to selected work</a>
@@ -654,6 +662,12 @@
       </div>
     </footer>
     <script>
+      const sendAnalyticsEvent = (eventName, parameters = {}) => {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, parameters);
+        }
+      };
+
       const moduleButtons = document.querySelectorAll(".cadre-module-button");
 
       moduleButtons.forEach((button) => {
@@ -670,8 +684,56 @@
           if (willOpen && target) {
             button.setAttribute("aria-expanded", "true");
             target.hidden = false;
+            sendAnalyticsEvent("cadre_module_select", {
+              module_name: button.textContent.trim(),
+            });
           }
         });
+      });
+
+      document.querySelectorAll("details.project-details").forEach((details) => {
+        details.addEventListener("toggle", () => {
+          const project = details.closest(".case-study");
+          const projectTitle = project?.querySelector(".case-header h3")?.textContent.trim() || "Project";
+
+          sendAnalyticsEvent("project_details_toggle", {
+            project_name: projectTitle,
+            details_state: details.open ? "opened" : "closed",
+          });
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const link = event.target.closest("a");
+        if (!link) return;
+
+        const href = link.getAttribute("href") || "";
+        const linkText = link.textContent.trim();
+
+        if (href.startsWith("mailto:")) {
+          sendAnalyticsEvent("contact_click", { contact_method: "email" });
+          return;
+        }
+
+        if (href.endsWith(".pdf")) {
+          sendAnalyticsEvent("resume_download", {
+            document_name: href.includes("Resume") ? "resume" : "project_report",
+          });
+          return;
+        }
+
+        if (link.classList.contains("repository-link") || link.closest(".cadre-repo-links")) {
+          sendAnalyticsEvent("repository_click", {
+            repository_name: linkText,
+          });
+          return;
+        }
+
+        if (href.includes("linkedin.com") || href.includes("github.com")) {
+          sendAnalyticsEvent("professional_profile_click", {
+            profile_name: href.includes("linkedin.com") ? "LinkedIn" : "GitHub",
+          });
+        }
       });
     </script>
   </body>
