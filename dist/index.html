@@ -65,6 +65,7 @@
 
             <p class="case-lede">Through Georgia Tech’s Structures and Multidisciplinary Design Optimization Group, I am using AMIGO, an engineering modeling and optimization framework, to reproduce and study disciplines from CADRE, an open-source multidisciplinary spacecraft design benchmark. The research focuses on building, validating, and connecting physics-based computational components for system-level analysis and design optimization.</p>
             <div class="cadre-repo-links" aria-label="Project repositories">
+              <a href="https://github.com/adarshnarayanan4/cadre-amigo" target="_blank" rel="noopener noreferrer">Research Repository</a>
               <a href="https://github.com/smdogroup/amigo" target="_blank" rel="noopener noreferrer">AMIGO Repository</a>
               <a href="https://github.com/OpenMDAO/CADRE" target="_blank" rel="noopener noreferrer">CADRE Repository</a>
             </div>
@@ -110,6 +111,11 @@
                 <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-power">
                   <span class="module-number">05</span>
                   <strong>Power</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-battery">
+                  <span class="module-number">06</span>
+                  <strong>Battery</strong>
                 </button>
                 <span class="map-connector map-connector-muted" aria-hidden="true">→</span>
                 <div class="map-node map-node-future"><strong>More problems to come</strong></div>
@@ -329,6 +335,39 @@
                     <figure class="figure-card">
                       <div class="figure-media"><img src="assets/cadre-battery-power.png" alt="CADRE spacecraft battery power history" /></div>
                       <figcaption><strong>Battery power balance</strong><span>Communication, reaction-wheel, and baseline spacecraft loads determine the remaining battery power.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-battery" aria-labelledby="cadre-battery-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-battery-title">Battery</h3>
+                    <p>Temperature-dependent voltage, current, and state-of-charge propagation across the 12-hour CADRE mission.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Propagate spacecraft battery state of charge from total battery power and body temperature while evaluating the corresponding temperature-dependent voltage and current.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I implemented CADRE’s nonlinear voltage, current, and state-rate equations in AMIGO, connected 1,500 battery nodes with trapezoidal integration, and enforced the initial state of charge from the benchmark dataset.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the independent Python trapezoidal solution exactly to reported precision. The maximum dynamics residual was zero and the maximum trapezoidal transcription residual was 5.90 × 10<sup>−17</sup>.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Battery-model results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-battery-soc.png" alt="AMIGO and CADRE battery state-of-charge histories across the 12-hour mission" /></div>
+                      <figcaption><strong>State-of-charge history</strong><span>AMIGO’s trapezoidal solution follows the CADRE RK4 history through repeated charge and discharge cycles, with state of charge ranging from 0.260 to 0.939.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-battery-current.png" alt="AMIGO and CADRE temperature-dependent battery current histories" /></div>
+                      <figcaption><strong>Temperature-dependent current</strong><span>Current computed from battery power, state of charge, and body temperature remained between −10.02 and 0.689 A across the mission.</span></figcaption>
                     </figure>
                   </section>
                 </section>

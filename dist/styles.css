@@ -365,7 +365,7 @@ h2 {
 
 .cadre-map-route {
   display: grid;
-  grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr) auto minmax(120px, 1fr) auto minmax(120px, 1fr) auto minmax(120px, 1fr) auto minmax(130px, 1fr);
+  grid-template-columns: minmax(110px, 1fr) auto minmax(110px, 1fr) auto minmax(110px, 1fr) auto minmax(110px, 1fr) auto minmax(110px, 1fr) auto minmax(110px, 1fr) auto minmax(130px, 1fr);
   align-items: stretch;
   gap: clamp(.3rem, .65vw, .6rem);
 }
@@ -419,7 +419,7 @@ h2 {
   border-color: #aab0aa;
   border-style: dashed;
 }
-.map-connector { display: grid; place-items: center; color: var(--signal); font-size: 1.45rem; }
+.map-connector { display: grid; place-items: center; color: var(--signal); font-size: 1.45rem; pointer-events: none; }
 .cadre-problems { min-width: 0; }
 
 .cadre-problem {
