@@ -117,6 +117,21 @@
                   <span class="module-number">06</span>
                   <strong>Battery</strong>
                 </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-parameters">
+                  <span class="module-number">07</span>
+                  <strong>Parameters</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-reaction-wheel">
+                  <span class="module-number">08</span>
+                  <strong>Reaction Wheels</strong>
+                </button>
+                <span class="map-connector" aria-hidden="true">→</span>
+                <button class="map-node map-node-active cadre-module-button" type="button" aria-expanded="false" aria-controls="cadre-communication">
+                  <span class="module-number">09</span>
+                  <strong>Communication</strong>
+                </button>
                 <span class="map-connector map-connector-muted" aria-hidden="true">→</span>
                 <div class="map-node map-node-future"><strong>More problems to come</strong></div>
               </div>
@@ -368,6 +383,105 @@
                     <figure class="figure-card">
                       <div class="figure-media"><img src="assets/cadre-battery-current.png" alt="AMIGO and CADRE temperature-dependent battery current histories" /></div>
                       <figcaption><strong>Temperature-dependent current</strong><span>Current computed from battery power, state of charge, and body temperature remained between −10.02 and 0.689 A across the mission.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-parameters" aria-labelledby="cadre-parameters-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-parameters-title">Parameters</h3>
+                    <p>Cubic B-spline parameterization of communication power, spacecraft roll, and 12 solar-panel current schedules.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Convert a compact set of mission-design control points into smooth time histories that can drive the spacecraft disciplines at every analysis node.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I implemented CADRE’s cubic B-spline parameterization in AMIGO. Each of the 1,500 mission nodes depends on four local basis functions drawn from 300 control points, producing communication power, roll angle, and 12 panel-current commands.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the independent Python parameter model exactly. Maximum differences from the original CADRE histories were 1.87 × 10<sup>−13</sup> W, 5.00 × 10<sup>−14</sup> rad, and 1.63 × 10<sup>−14</sup> A.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Mission parameter results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-parameter-commands.png" alt="Communication power and commanded spacecraft roll histories across the 12-hour mission" /></div>
+                      <figcaption><strong>Mission command profiles</strong><span>The B-spline parameterization expands compact design variables into smooth communication-power and roll-angle histories.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-parameter-currents.png" alt="Representative solar-panel current set-point histories across the 12-hour mission" /></div>
+                      <figcaption><strong>Solar-panel current schedules</strong><span>Representative current set points show how the parameter model supplies distinct commands to the 12 panel channels.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-reaction-wheel" aria-labelledby="cadre-reaction-wheel-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-reaction-wheel-title">Reaction Wheels</h3>
+                    <p>Three-axis wheel-speed propagation, attitude-torque coupling, and electrical-load prediction.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Determine the wheel torque required to maintain the commanded attitude, propagate the three reaction-wheel speeds, and calculate their electrical power demand over the mission.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I coupled the attitude torque and body angular velocity to the wheel dynamics, transcribed the three state equations with trapezoidal constraints across 1,500 nodes, and implemented CADRE’s motor-power relation in AMIGO.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the independent Python trapezoidal model exactly for torque, wheel speed, wheel rate, and power. The maximum transcription residual was 4.20 × 10<sup>−16</sup>.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Reaction-wheel results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-reaction-wheel-speed.png" alt="Three-axis reaction-wheel speed histories across the 12-hour CADRE mission" /></div>
+                      <figcaption><strong>Wheel-speed dynamics</strong><span>The three wheel states respond to the torque required by the spacecraft attitude profile, remaining between −1.83 and 1.31 s<sup>−1</sup>.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-reaction-wheel-power.png" alt="AMIGO trapezoidal and CADRE RK4 reaction-wheel electrical-load histories" /></div>
+                      <figcaption><strong>Electrical-load validation</strong><span>The AMIGO and original CADRE power histories closely overlay; the maximum difference is 7.48 × 10<sup>−7</sup> W despite their different integration schemes.</span></figcaption>
+                    </figure>
+                  </section>
+                </section>
+
+                <section class="cadre-problem" id="cadre-communication" aria-labelledby="cadre-communication-title" hidden>
+                  <header class="cadre-problem-header">
+                    <h3 id="cadre-communication-title">Communication</h3>
+                    <p>Ground-station geometry, antenna gain, link rate, and accumulated data transfer.</p>
+                  </header>
+
+                  <div class="story-grid cadre-story-grid">
+                    <article>
+                      <h3>The What</h3>
+                      <p>Predict when the spacecraft can communicate with its ground station, determine the available link rate, and integrate the data downloaded during each visibility window.</p>
+                    </article>
+                    <article>
+                      <h3>The How</h3>
+                      <p>I transformed the ground-station vector through Earth, inertial, body, and antenna frames; evaluated line of sight and range; recreated the antenna-gain lookup with a two-dimensional MBI spline; and coupled the link budget to trapezoidal data propagation.</p>
+                    </article>
+                    <article>
+                      <h3>The Results</h3>
+                      <p>AMIGO matched the independent Python bitrate and data model exactly with a 4.28 × 10<sup>−13</sup> transcription residual. It predicted 5,066.43 Gibyte downloaded over the 12-hour mission.</p>
+                    </article>
+                  </div>
+
+                  <section class="cadre-figure-section cadre-figure-stack" aria-label="Communication-system results">
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-communication-geometry.png" alt="Ground-station range and communication line-of-sight histories across the 12-hour mission" /></div>
+                      <figcaption><strong>Ground-station access</strong><span>Range and Earth blockage define two short full-visibility windows in the benchmark mission, with 38 of 1,500 nodes in full line of sight.</span></figcaption>
+                    </figure>
+                    <figure class="figure-card">
+                      <div class="figure-media"><img src="assets/cadre-communication-data.png" alt="Ground-link bit rate and cumulative downloaded data across the 12-hour mission" /></div>
+                      <figcaption><strong>Link rate and data return</strong><span>The antenna gain, range, power, and visibility combine to produce two data-transfer passes and a final AMIGO total of 5,066.43 Gibyte.</span></figcaption>
                     </figure>
                   </section>
                 </section>
